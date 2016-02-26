@@ -31,3 +31,11 @@ use Mix.Config
 config :trot, :router, HTTPServer.Router
 config :trot, :port, 8888
 config :logger, level: :debug
+#Disabling LiveReload, LiveReload does not work with umbrella projects
+config :trot, :pre_routing, [ "Elixir.Plug.Logger": [],"Elixir.PlugHeartbeat": [path: Application.get_env(:trot, :heartbeat, "/heartbeat")]]
+
+#default_pre_routing = [
+#  "Elixir.Trot.LiveReload": [env: Mix.env],
+#  "Elixir.Plug.Logger": [],
+#  "Elixir.PlugHeartbeat": [path: Application.get_env(:trot, :heartbeat, "/heartbeat")],
+#]
